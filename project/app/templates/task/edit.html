@@ -1,0 +1,15 @@
+{% extends "layout.html"%}
+{% from "helpers/_forms.html" import render_field %}
+{% block container %}
+<h3>Editar tarea</h3>
+	<form method="post">
+		<input type="hidden" name="csrf_token" value="{{ csrf_token() }}"\>
+		<div class="form-group">
+		{{ render_field(form.title, class="form-control") }}
+		</div>
+		<div class="form-group">
+		{{ render_field(form.description, class="form-control") }}
+		</div>
+		<button type="submit" name="button">Editar</button>
+	</form>
+{% endblock %}

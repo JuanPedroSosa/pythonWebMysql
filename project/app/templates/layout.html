@@ -1,0 +1,65 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+{{title}}
+{% endblock %}
+
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<div class="container">
+  		<a class="navbar-brand" href="#">Navbar</a>
+
+    	<ul class="navbar-nav mr-auto">
+			{% if current_user.is_authenticated %}
+      		<li class="nav-item {% if active == "task" %} active {% endif %}">
+        	<a class="nav-link" href="{{ url_for(".task")}}">Tareas</a>
+      		</li>
+      		<li class="nav-item {% if active == "new_task" %} active {% endif %}">
+        	<a class="nav-link" href="{{ url_for(".new_task")}}">Nueva Tarea</a>
+      		</li>
+      		<li class="nav-item {% if active == "logout" %} active {% endif %}">
+        	<a class="nav-link" href="{{ url_for(".logout")}}">Logout</a>
+      		</li>
+			{% else %}
+			<li class="nav-item {% if active == "login" %} active {% endif %}">
+        	<a class="nav-link" href="{{ url_for(".login")}}">Login</a>
+      		</li>
+			<li class="nav-item {% if active == "register" %} active {% endif %}">
+        	<a class="nav-link" href="{{ url_for(".register")}}">Registro</a>
+      		</li>
+			{% endif %}
+    	</ul>
+
+	</div>
+</nav>
+<!--acña va login, register, logout, tareas-->
+{% if current_user.is_authenticated %}
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-12 col-md-offset-1">
+	{% with messages = get_flashed_messages(with_categories=True) %}
+	{% if messages %}
+		{% for category, message in messages %}
+			{% if category == "error" %}
+				<div class="alert alert-danger" role="alert">
+					{{ message }}
+				</div>
+			{% else %}
+				<div class="alert alert-success" role="alert">
+					{{ message }}
+				</div>
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+	{% endwith %}
+	</div>
+</div>
+{% block container %}
+<container>
+
+</container>
+{% endblock %}
+{% endblock %}

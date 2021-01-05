@@ -1,0 +1,15 @@
+{% extends "layout.html"%}
+{% from "helpers/_forms.html" import render_field %}
+{% block container %}
+<h3>Login</h3>
+	<form method="post">
+		<input type="hidden" name="csrf_token" value="{{ csrf_token() }}"\>
+		<div class="form-group">
+		{{ render_field(form.username, class="form-control") }}
+		</div>
+		<div class="form-group">
+		{{ render_field(form.password, class="form-control") }}
+		</div>
+		<button type="submit" name="button" class="btn btn-primary">login</button>
+	</form>
+{% endblock %}

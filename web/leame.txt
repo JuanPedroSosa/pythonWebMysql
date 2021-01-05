@@ -1,0 +1,13 @@
+virtualenv env --python=python3
+utiliza la librería pycairo, entonces, tengo que instalarla
+sudo apt-get update
+sudo apt-get install -y pkg-config
+sudo apt install libcairo2-dev pkg-config python3-dev
+sudo apt-get install python3-gi gir1.2-webkit-3.0
+sudo apt install libgirepository1.0-dev
+pip install pycairo
+pip install --pre toga
+https://pokeapi.co/api/v2/
+pip install requests
+ejecutar:
+python -m main
